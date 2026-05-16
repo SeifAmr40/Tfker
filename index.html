@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ملخص التفكير والنقد الفني</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #f8fafc; min-height: 100vh; padding: 24px 16px; direction: rtl; }
+  .header { text-align: center; margin-bottom: 32px; }
+  .badge { display: inline-block; background: linear-gradient(135deg, #4f46e5, #7c3aed); border-radius: 16px; padding: 6px 20px; margin-bottom: 12px; }
+  .badge span { color: #fff; font-size: 13px; font-weight: 600; letter-spacing: 1px; }
+  h1 { font-size: 28px; font-weight: 900; color: #1e1b4b; margin: 0 0 8px; }
+  .subtitle { color: #6b7280; font-size: 15px; }
+  .sections { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .section { border-radius: 14px; overflow: hidden; border: 1px solid #e5e7eb; box-shadow: 0 1px 4px rgba(0,0,0,0.07); transition: all 0.2s; }
+  .section.open { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+  .sec-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: #fff; border: none; cursor: pointer; text-align: right; transition: background 0.2s; }
+  .sec-btn.open { }
+  .sec-title-wrap { display: flex; align-items: center; gap: 12px; }
+  .sec-icon { font-size: 22px; }
+  .sec-title { font-weight: 700; color: #1f2937; font-size: 16px; }
+  .sec-plus { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; transition: transform 0.2s; flex-shrink: 0; }
+  .sec-plus.rotated { transform: rotate(45deg); }
+  .sec-body { padding: 0 20px 20px; display: none; }
+  .sec-body.open { display: block; }
+  .sec-divider { height: 1px; margin-bottom: 16px; }
+  p.body-text { color: #374151; line-height: 1.9; margin-bottom: 12px; font-size: 15px; }
+  .note { border-radius: 8px; padding: 10px 16px; margin: 10px 0; color: #4b5563; font-size: 14px; }
+  .list-title { font-weight: 700; color: #1f2937; margin-bottom: 6px; font-size: 14px; }
+  ul.content-list { padding-right: 20px; margin: 0 0 12px; }
+  ul.content-list li { color: #374151; margin-bottom: 5px; line-height: 1.7; font-size: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 12px 0; }
+  .grid-item { background: #f9fafb; border-radius: 10px; padding: 10px 8px; text-align: center; }
+  .grid-num { font-size: 20px; font-weight: 800; }
+  .grid-label { font-size: 13px; color: #374151; margin-top: 2px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .col-box { background: #f9fafb; border-radius: 12px; padding: 14px; }
+  .col-title { font-weight: 700; margin-bottom: 8px; font-size: 14px; }
+  .col-list { padding-right: 16px; margin: 0; }
+  .col-list li { color: #374151; margin-bottom: 4px; font-size: 13px; line-height: 1.6; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-top: 10px; }
+  .card { background: #fff; border-radius: 10px; padding: 14px; }
+  .card-title { font-weight: 700; margin-bottom: 6px; font-size: 14px; }
+  .card-body { color: #4b5563; font-size: 13px; line-height: 1.7; }
+  .numbered { margin-top: 10px; }
+  .num-row { display: flex; gap: 12px; margin-bottom: 10px; align-items: flex-start; }
+  .num-circle { min-width: 28px; height: 28px; border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; flex-shrink: 0; }
+  .num-title { font-weight: 700; color: #1f2937; font-size: 14px; }
+  .num-body { color: #4b5563; font-size: 14px; }
+  .steps { margin-top: 10px; }
+  .step-row { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
+  .step-circle { min-width: 34px; height: 34px; border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; flex-shrink: 0; }
+  .step-content { padding-right: 12px; }
+  .step-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+  .step-body { color: #4b5563; font-size: 14px; line-height: 1.7; }
+  .footer { text-align: center; color: #9ca3af; font-size: 12px; margin-top: 32px; }
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .two-col { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+    h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="badge"><span>ملخص شامل</span></div>
+  <h1>التفكير والنقد الفني</h1>
+  <p class="subtitle">ملخص منظم يغطي جميع المحاور الرئيسية في المادة</p>
+</div>
+
+<div class="sections" id="sections"></div>
+<p class="footer">اضغط على أي قسم لعرض التفاصيل</p>
+
+<script>
+const sections = [
+  {
+    id:1, icon:"🧠", title:"تعريف التفكير", color:"#4f46e5", bg:"#eef2ff",
+    content:[
+      {type:"text", body:"التفكير هو سلسلة من النشاطات العقلية التي يقوم بها الدماغ عندما يتعرض لمثير، تُستقبل عبر الحواس الخمس، بهدف معالجة المعلومات والوصول إلى حلول أو أحكام أو معاني جديدة. وهو عملية مستمرة طالما الإنسان في حالة يقظة."},
+      {type:"list", title:"خصائص التفكير", items:["سلوك هادف — لا يحدث في فراغ.","سلوك تطوري — يزداد تعقيداً مع نمو الفرد.","فعّال إذا استند إلى معلومات دقيقة وأساليب صحيحة.","قابل للتطوير بالتدريب والمران، لكن الكمال المطلق غير ممكن.","يتشكّل من تداخل عناصر الزمان والموقف والموضوع.","يأخذ أشكالاً متعددة: لفظية، رمزية، كمية، مكانية، شكلية."]}
+    ]
+  },
+  {
+    id:2, icon:"⚙️", title:"عمليات التفكير الثماني", color:"#0891b2", bg:"#ecfeff",
+    content:[
+      {type:"text", body:"هناك ثماني عمليات للتفكير تتداخل وتتكامل فيما بينها:"},
+      {type:"grid", items:[{num:"١",label:"الفهم"},{num:"٢",label:"تكوين المفهوم"},{num:"٣",label:"تكوين المبادئ"},{num:"٤",label:"حل المشكلات"},{num:"٥",label:"صناعة القرارات"},{num:"٦",label:"البحوث"},{num:"٧",label:"الإنشاء"},{num:"٨",label:"التعبير الشفوي"}]},
+      {type:"note", body:"العمليات الثلاث الأولى موجّهة نحو اكتساب المعرفة وتكوين المفاهيم، وهي أساس لبقية العمليات."}
+    ]
+  },
+  {
+    id:3, icon:"📊", title:"مستويات التفكير", color:"#059669", bg:"#ecfdf5",
+    content:[
+      {type:"twoCol", cols:[
+        {title:"🔹 التفكير الأساسي", items:["اكتساب المعرفة وتذكّرها","الملاحظة والمقارنة","التصنيف","ضروري للانتقال إلى التفكير المركب"]},
+        {title:"🔷 التفكير المركب (5 أنواع)", items:["التفكير الناقد","التفكير الإبداعي","حل المشكلات","اتخاذ القرار","التفكير فوق المعرفي"]}
+      ]}
+    ]
+  },
+  {
+    id:4, icon:"💡", title:"أنواع التفكير المركب", color:"#d97706", bg:"#fffbeb",
+    content:[
+      {type:"cards", items:[
+        {title:"التفكير الناقد", body:"فحص وتقييم الحلول والمعلومات بموضوعية وإصدار حكم منطقي؛ يتضمن التحليل والتمييز والتأمل في ما نصدقه ونفعله."},
+        {title:"التفكير الإبداعي", body:"نشاط عقلي هادف يسعى للتوصل إلى حلول أو نتائج أصيلة غير مسبوقة، يتميز بالشمولية والتعقيد وتداخل العناصر المعرفية والوجدانية."},
+        {title:"حل المشكلات", body:"استخدام المعارف المكتسبة والمهارات للاستجابة لموقف غير مألوف وحل التناقض القائم فيه — سلوك موجّه نحو هدف."},
+        {title:"اتخاذ القرار", body:"عملية تفكير مركبة تهدف إلى اختيار أفضل البدائل المتاحة في موقف معين للوصول إلى الهدف المرجو."},
+        {title:"التفكير فوق المعرفي", body:"أعلى مستويات النشاط العقلي؛ يتضمن التخطيط ومراقبة أداء الفرد وتقييم مهاراته أثناء حل المشكلة — وعي الفرد بتفكيره ذاته."}
+      ]}
+    ]
+  },
+  {
+    id:5, icon:"🛠️", title:"مهارات التفكير السبع", color:"#7c3aed", bg:"#f5f3ff",
+    content:[
+      {type:"numbered", items:[
+        {title:"مهارات التركيز", body:"تعريف المشكلات، وضع الأهداف، جمع المعلومات، الملاحظة، التساؤل."},
+        {title:"مهارات التذكر", body:"الترميز والاستدعاء."},
+        {title:"مهارات تنظيم المعلومات", body:"المقارنة والتصنيف والترتيب."},
+        {title:"مهارات التحليل", body:"تحديد الخصائص والمكونات، وتحديد العلاقات والأنماط."},
+        {title:"المهارات الإنتاجية التوليدية", body:"الاستنتاج، التنبؤ، الإسهاب، التمثيل."},
+        {title:"مهارات التكامل والدمج", body:"التلخيص وإعادة البناء."},
+        {title:"مهارات التقويم", body:"وضع المحكات والتعرف على الأخطاء."}
+      ]}
+    ]
+  },
+  {
+    id:6, icon:"🔍", title:"التفكير الناقد — تعمّق", color:"#dc2626", bg:"#fef2f2",
+    content:[
+      {type:"text", body:"التفكير الناقد هو القدرة على تحليل المعلومات بموضوعية وإصدار حكم منطقي، يتضمن تقييم المصادر والأدلة والحقائق. مصطلح مشتق من اليونانية kritikos أي «القدرة على الحكم والتمييز»."},
+      {type:"list", title:"لتصبح مفكراً ناقداً عليك تعلّم:", items:["إنشاء وتوليف قضاياك الخاصة.","توضيح الغرض من تفكيرك وسياقه.","التساؤل حول مصادر معلوماتك.","تحديد الحجج والأسانيد.","تحليل المصادر والحجج.","تقييم حجج الآخرين ومحاورتهم."]}
+    ]
+  },
+  {
+    id:7, icon:"📋", title:"6 خطوات لتطوير التفكير الناقد", color:"#0284c7", bg:"#f0f9ff",
+    content:[
+      {type:"steps", items:[
+        {num:"١", title:"وضّح هدفك وسياقك", body:"ركّز على السؤال الجوهري، وحدّد وجهات النظر المختلفة، وتأكد من كفاية فهمك للمعلومات المتاحة."},
+        {num:"٢", title:"تساءل وحلّل مصادرك", body:"تشكّك في مصداقية وأهمية كل مصدر. ليست كل المصادر متساوية في الدقة."},
+        {num:"٣", title:"تعرّف على الحجج وحدّدها", body:"حدّد كل مطالبة مدعومة بأسباب؛ هذه مهارة جوهرية في التفكير الناقد."},
+        {num:"٤", title:"حلّل المصادر والحجج", body:"افحص كيف تتفاعل الأدلة والمنطق والافتراضات مع بعضها."},
+        {num:"٥", title:"قيّم حجج الآخرين", body:"اشرح نقاط القوة والضعف في كل حجة، وقيّم الأدلة الداعمة لها."},
+        {num:"٦", title:"ابتكر حججك الخاصة", body:"اجمع الأدلة والمنطق والافتراضات لبناء مطالبتك الرئيسية (التوليف)."}
+      ]}
+    ]
+  },
+  {
+    id:8, icon:"🎨", title:"النقد الفني", color:"#9333ea", bg:"#faf5ff",
+    content:[
+      {type:"text", body:"النقد الفني عملية علمية منهجية تتجاوز الإعجاب إلى دراسة الأعمال الفنية وتفسيرها وتقييمها بناءً على معايير موضوعية."},
+      {type:"numbered", items:[
+        {title:"الوصف", body:"إعداد قائمة جرد بعناصر وأجزاء العمل الفني الظاهرة دون إبداء رأي."},
+        {title:"التحليل", body:"الكشف عن علاقة العناصر بالأشكال وتأثيرها على بعضها البعض."},
+        {title:"التفسير", body:"استنباط المعنى الشامل للعمل الفني من خلال الوصف والتحليل."},
+        {title:"الحكم", body:"إعطاء قيمة للعمل الفني مقارنةً بأعمال أخرى بناءً على الخطوات السابقة."}
+      ]},
+      {type:"list", title:"أهداف النقد الفني", items:["فهم معاني موضوعات الفن.","إدراك الخصائص التي تثبت جودة العمل الفني.","تحقيق المتعة الناتجة عن اكتشاف قيمة الفن.","تكثيف وتعميق متعة المتذوق.","نقل الأفكار عن الفن والحياة التي هي أساسه."]}
+    ]
+  },
+  {
+    id:9, icon:"✨", title:"التذوق الفني", color:"#db2777", bg:"#fdf2f8",
+    content:[
+      {type:"text", body:"التذوق الفني هو عملية اتصال بين الفنان (المرسِل) والمتذوق (المستقبِل) عبر العمل الفني؛ وهو القدرة على الإحساس بالقيمة الجمالية والفنية والتعبيرية في الأعمال الفنية."},
+      {type:"list", title:"مراحل التذوق الفني (محمود البسيوني)", items:["مرحلة البحث والتأمل: دقة وتمحيص في إدراك العلاقات واستنباط القيم.","مرحلة الاكتساب: اكتساب المتعة الجمالية من البحث التأملي الفاحص.","مرحلة التعميم: تطبيق ما اكتسبه على مواقف جمالية مستقبلية."]},
+      {type:"list", title:"أسس التذوق الفني", items:["هو قدرة فطرية تنمو بالتعلم والبيئة الجمالية.","الفن جزء من الظاهرة الجمالية، والتذوق الفني جزء من التذوق الجمالي.","الاطلاع على تاريخ الفن ضروري لفهم الأعمال والحكم عليها.","تتباين قدرة التذوق بين الأفراد حسب البيئة والشخصية والخبرة.","سلوك قابل للقياس من خلال مقاييس الحساسية والتفضيل الجمالي."]}
+    ]
+  },
+  {
+    id:10, icon:"🌟", title:"خصائص المفكر الناقد الفنان", color:"#ea580c", bg:"#fff7ed",
+    content:[
+      {type:"cards", items:[
+        {title:"الوعي الذاتي والمراجعة المستمرة", body:"يمتلك «عيناً ثالثة» تراجع العمل أثناء إنتاجه، ولديه الشجاعة لإلغاء ما لا يخدم الفكرة الكلية."},
+        {title:"الانفتاح العقلي والمرونة", body:"يؤمن بتعددية التفسيرات ولديه مرونة في تغيير مساره الفني إذا وجد ما هو أفضل."},
+        {title:"الاستقلالية والأصالة", body:"لا ينجرف خلف الموضة دون قناعة، ويسعى دائماً لابتكار بصمة تعكس فلسفته الشخصية."},
+        {title:"النظرة الشمولية", body:"يدرك أن الجمال وحده لا يكفي؛ العناصر التقنية يجب أن تخدم المعنى النفسي أو الفلسفي للعمل."},
+        {title:"الفضول والبحث الدائم", body:"فنه يطرح أسئلة أكثر مما يقدم إجابات، وتجاربه مبنية على دراسة لا على عشوائية."},
+        {title:"الموضوعية في تقبّل النقد", body:"يفصل أناه عن عمله؛ يحلل النقد الموجَّه إليه بموضوعية ليأخذ منه ما يطوّره."}
+      ]}
+    ]
+  }
+];
+
+function buildContent(content, color) {
+  return content.map(item => {
+    if (item.type === "text") {
+      return `<p class="body-text">${item.body}</p>`;
+    }
+    if (item.type === "note") {
+      return `<div class="note" style="background:#f9fafb;border-right:4px solid ${color}">💡 ${item.body}</div>`;
+    }
+    if (item.type === "list") {
+      const title = item.title ? `<p class="list-title">${item.title}</p>` : '';
+      const lis = item.items.map(li => `<li>${li}</li>`).join('');
+      return `<div>${title}<ul class="content-list">${lis}</ul></div>`;
+    }
+    if (item.type === "grid") {
+      const cells = item.items.map(g =>
+        `<div class="grid-item" style="border:1px solid ${color}33">
+          <div class="grid-num" style="color:${color}">${g.num}</div>
+          <div class="grid-label">${g.label}</div>
+        </div>`
+      ).join('');
+      return `<div class="grid">${cells}</div>`;
+    }
+    if (item.type === "twoCol") {
+      const cols = item.cols.map(col => {
+        const lis = col.items.map(li => `<li>${li}</li>`).join('');
+        return `<div class="col-box" style="border:1px solid ${color}30">
+          <p class="col-title" style="color:${color}">${col.title}</p>
+          <ul class="col-list">${lis}</ul>
+        </div>`;
+      }).join('');
+      return `<div class="two-col">${cols}</div>`;
+    }
+    if (item.type === "cards") {
+      const cards = item.items.map(c =>
+        `<div class="card" style="border:1px solid ${color}30;border-top:3px solid ${color}">
+          <p class="card-title" style="color:${color}">${c.title}</p>
+          <p class="card-body">${c.body}</p>
+        </div>`
+      ).join('');
+      return `<div class="cards">${cards}</div>`;
+    }
+    if (item.type === "numbered") {
+      const rows = item.items.map((n, j) =>
+        `<div class="num-row">
+          <div class="num-circle" style="background:${color}">${j+1}</div>
+          <div><span class="num-title">${n.title}: </span><span class="num-body">${n.body}</span></div>
+        </div>`
+      ).join('');
+      return `<div class="numbered">${rows}</div>`;
+    }
+    if (item.type === "steps") {
+      const rows = item.items.map(s =>
+        `<div class="step-row">
+          <div class="step-circle" style="background:${color}">${s.num}</div>
+          <div class="step-content" style="border-right:2px solid ${color}30">
+            <p class="step-title" style="color:${color}">${s.title}</p>
+            <p class="step-body">${s.body}</p>
+          </div>
+        </div>`
+      ).join('');
+      return `<div class="steps">${rows}</div>`;
+    }
+    return '';
+  }).join('');
+}
+
+const container = document.getElementById('sections');
+let openId = null;
+
+sections.forEach(sec => {
+  const div = document.createElement('div');
+  div.className = 'section';
+  div.id = 'sec-' + sec.id;
+
+  const bodyHTML = buildContent(sec.content, sec.color);
+
+  div.innerHTML = `
+    <button class="sec-btn" onclick="toggle(${sec.id})" id="btn-${sec.id}" style="">
+      <div class="sec-title-wrap">
+        <span class="sec-icon">${sec.icon}</span>
+        <span class="sec-title" id="title-${sec.id}">${sec.title}</span>
+      </div>
+      <div class="sec-plus" id="plus-${sec.id}" style="background:${sec.color}20;color:${sec.color}">+</div>
+    </button>
+    <div class="sec-body" id="body-${sec.id}" style="background:${sec.bg}">
+      <div class="sec-divider" style="background:${sec.color}30"></div>
+      ${bodyHTML}
+    </div>
+  `;
+  container.appendChild(div);
+});
+
+function toggle(id) {
+  const sec = sections.find(s => s.id === id);
+  const isOpen = openId === id;
+
+  // close previous
+  if (openId !== null) {
+    const prev = sections.find(s => s.id === openId);
+    document.getElementById('body-' + openId).classList.remove('open');
+    document.getElementById('sec-' + openId).classList.remove('open');
+    document.getElementById('plus-' + openId).classList.remove('rotated');
+    document.getElementById('btn-' + openId).style.background = '#fff';
+    document.getElementById('title-' + openId).style.color = '#1f2937';
+  }
+
+  if (!isOpen) {
+    openId = id;
+    document.getElementById('body-' + id).classList.add('open');
+    document.getElementById('sec-' + id).classList.add('open');
+    document.getElementById('sec-' + id).style.border = `1px solid ${sec.color}50`;
+    document.getElementById('plus-' + id).classList.add('rotated');
+    document.getElementById('btn-' + id).style.background = sec.bg;
+    document.getElementById('title-' + id).style.color = sec.color;
+  } else {
+    openId = null;
+    document.getElementById('sec-' + id).style.border = '1px solid #e5e7eb';
+  }
+}
+</script>
+</body>
+</html>
